@@ -4,9 +4,8 @@ var Schema = mongoose.Schema;
 
 var todoSchema = new Schema({
     username: String,
-    todo: String,
-    isDone: Boolean,
-    hasAttachment: Boolean
+    password: String,
+    info: String,
 });
 
 var Todos = mongoose.model('Todos', todoSchema);
