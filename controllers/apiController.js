@@ -1,4 +1,4 @@
-var Todos = require('../models/todoModel');
+var userData = require('../models/userDataModel');
 var bodyParser = require('body-parser');
 
 module.exports = function(app){
@@ -9,28 +9,30 @@ module.exports = function(app){
 
   //***************************************************
   //
-  //  Retrieve information by username
+  //  Retrieve information by email
   //
   //***************************************************
-  app.get('/api/authentication/:username', function(req, res){
-    Todos.find({ username: req.params.username},
-    function(err,todos){
+  app.get('/api/authentication/:email', function(req, res){
+    console.log("LOGIN")
+    userData.find({ email: req.params.email},
+    function(err,userData){
       if(err) throw err;
-      res.send(todos);
+      console.log(userData)
+      res.send(userData);
     });
   });
 
   //***************************************************
   //
-  //  Retrieve information by username
+  //  Retrieve information by ID
   //
   //***************************************************
 
   app.get('/api/authentication/:id', function(req, res){
-    Todos.findById({ _id: req.params.id},
-    function(err,todos){
+    userData.findById({ _id: req.params.id},
+    function(err,userData){
       if(err) throw err;
-      res.send(todos);
+      res.send(userData);
     });
   });
 
@@ -41,11 +43,17 @@ module.exports = function(app){
   //***************************************************
 
   app.post('/api/authentication', function(req, res){
-
     //update existing
     if(req.body.id){
-      Todos.findByIdAndUpdate(req.body.id,{
-        username:req.body.username, password: req.body.password, info: req.body.info}, function(err, todo){
+      userData.findByIdAndUpdate(req.body.id,{
+        firstName:req.body.firstName,
+        lastName:req.body.lastName,
+        phone:req.body.phone,
+        address:req.body.address,
+        email:req.body.email,
+        password: req.body.password
+      },
+        function(err, userData){
           if(err) throw err;
           res.send(JSON.stringify({ status : 1 }));
         });
@@ -53,12 +61,15 @@ module.exports = function(app){
     else{
 
       //create new
-      var newTodo = Todos({
-        username: req.body.username,
-        password:req.body.password,
-        info: req.body.info
+      var newUserData = userData({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone,
+        address: req.body.address,
+        email: req.body.email,
+        password:req.body.password
       });
-      newTodo.save(function(err){
+      newUserData.save(function(err){
         if(err) throw err;
         res.send(JSON.stringify({ status : 1 }));
       });
@@ -73,8 +84,8 @@ module.exports = function(app){
   //***************************************************
 
   app.delete('/api/authentication', function(req, res){
-    Todos.findByIdAndRemove(req.body.id,
-    function(err,todos){
+    userData.findByIdAndRemove(req.body.id,
+    function(err,userData){
       if(err) throw err;
       res.send(JSON.stringify({ status : 1 }));
     });

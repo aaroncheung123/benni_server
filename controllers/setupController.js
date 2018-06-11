@@ -1,9 +1,9 @@
-var Todos = require('../models/todoModel');
+var userData = require('../models/userDataModel');
 
 module.exports = function(app){
-  app.get('/api/setupTodos', function(req,res){
+  app.get('/api/setupUserData', function(req,res){
     //seed database
-    var starterTodos = [
+    var starterUserData = [
       {
           username: 't1',
           password: '123',
@@ -11,7 +11,7 @@ module.exports = function(app){
       }
     ];
 
-    Todos.create(starterTodos, function(err, results){
+    userData.create(starterUserData, function(err, results){
       res.send(results);
     });
   });
