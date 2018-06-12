@@ -15,8 +15,18 @@ io.on('connection', function(socket){
   console.log('one user connected ' + socket.id);
   socket.on('message',function(data){
     console.log(data);
+
+    //splicing the email in order to broadcast to specific client
+    var email;
+    var message;
+    for (var i = 0; i < data.length; i++) {
+      if(data[i] == ':'){
+        email = data.slice(0,i);
+        message = data.slice(i+1);
+      }
+    }
     var sockets = io.sockets.sockets;
-      socket.broadcast.emit('message', data);
+    socket.broadcast.emit(email, message);
   })
   socket.on('disconnect', function(){
     console.log('one user disconnected ' + socket.id);

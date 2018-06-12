@@ -13,7 +13,6 @@ module.exports = function(app){
   //
   //***************************************************
   app.get('/api/authentication/:email', function(req, res){
-    console.log("LOGIN")
     userData.find({ email: req.params.email},
     function(err,userData){
       if(err) throw err;
