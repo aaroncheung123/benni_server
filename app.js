@@ -57,6 +57,3 @@ apiController(app);
 http.listen(port, function(){
   console.log('server listening on port 3000');
 })
-//http.listen(3000);
-
-//https://mighty-citadel-61208.herokuapp.com/
