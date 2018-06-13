@@ -43,7 +43,6 @@ var mongoose = require('mongoose');
 var config = require('./config');
 var setupController = require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
-
 var port = process.env.PORT || 3000;
 
 app.use('/assets', express.static(__dirname + '/public'));
@@ -55,8 +54,9 @@ setupController(app);
 apiController(app);
 
 
-http.listen(3000, function(){
+http.listen(port, function(){
   console.log('server listening on port 3000');
 })
+//http.listen(3000);
 
 //https://mighty-citadel-61208.herokuapp.com/
