@@ -68,7 +68,10 @@ module.exports = function(app){
         phone: req.body.phone,
         address: req.body.address,
         email: req.body.email,
-        password:req.body.password
+        password:req.body.password,
+        num: req.body.num,
+        progressNumbers:{
+          drive:req.body.progressNumbers.drive}
       });
       newUserData.save(function(err){
         if(err) throw err;
