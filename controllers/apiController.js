@@ -63,15 +63,21 @@ module.exports = function(app){
 
       //create new
       var newUserData = userData({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        phone: req.body.phone,
-        address: req.body.address,
-        email: req.body.email,
-        password:req.body.password,
-        num: req.body.num,
+        info:{
+          firstName: req.body.info.firstName,
+          lastName: req.body.info.lastName,
+          phone: req.body.info.phone,
+          address: req.body.info.address,
+          email: req.body.info.email,
+          password:req.body.info.password
+        },
+
         progressNumbers:{
-          drive:req.body.progressNumbers.drive}
+          drive:req.body.progressNumbers.drive,
+          chat:req.body.progressNumbers.chat,
+          math:req.body.progressNumbers.math,
+          charge:req.body.progressNumbers.charge
+        }
       });
       newUserData.save(function(err){
         if(err) throw err;
