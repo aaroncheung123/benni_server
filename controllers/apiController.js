@@ -49,7 +49,10 @@ module.exports = function(app){
         phone:req.body.phone,
         address:req.body.address,
         email:req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        num: req.body.num,
+        progressNumbers:{
+          drive:req.body.progressNumbers.drive}
       },
         function(err, userData){
           if(err) throw err;
