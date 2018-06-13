@@ -26,6 +26,7 @@ var userDataSchema = new Schema({
         address: String,
         email: String,
         password: String,
+        t1: String,
         num: Number,
         progressNumbers:{
         drive: Number,
