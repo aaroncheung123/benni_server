@@ -16,6 +16,7 @@ module.exports = function(app){
     userData.find({ info: { email: req.params.email } },
     function(err,userData){
       if(err) throw err;
+      console.log(userData);
       res.send(userData);
     });
   });
