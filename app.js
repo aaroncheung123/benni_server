@@ -9,7 +9,7 @@ var http = require('http').Server(app);
 
 var io = require('socket.io')(http);
 app.get('/',function(req,res){
-  res.sendFile(__dirname + '/index.html');git
+  res.sendFile(__dirname + '/index.html');
 })
 io.on('connection', function(socket){
   console.log('one user connected ' + socket.id);
@@ -59,7 +59,7 @@ http.listen(port, function(){
 })
 
 
-// { 
+// {
 //   "_id" : ObjectId( "abcd" ),
 //   "className" : "com.myUser",
 //   "reg" : 12345,
