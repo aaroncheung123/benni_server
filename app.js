@@ -57,14 +57,3 @@ apiController(app);
 http.listen(port, function(){
   console.log('server listening on port 3000');
 })
-
-
-// {
-//   "_id" : ObjectId( "abcd" ),
-//   "className" : "com.myUser",
-//   "reg" : 12345,
-//   "test" : [
-//     { "className" : "com.abc",
-//       "testid" : "pqrs"
-//     }]
-//   }
