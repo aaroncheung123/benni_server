@@ -51,9 +51,7 @@ module.exports = function(app){
         address:req.body.address,
         email:req.body.email,
         password: req.body.password,
-        num: req.body.num,
-        progressNumbers:{
-          drive:req.body.progressNumbers.drive}
+        num: req.body.num
       },
         function(err, userData){
           if(err) throw err;
@@ -74,10 +72,8 @@ module.exports = function(app){
         },
 
         progressNumbers:{
-          drive:req.body.progressNumbers.drive,
-          chat:req.body.progressNumbers.chat,
-          math:req.body.progressNumbers.math,
-          charge:req.body.progressNumbers.charge
+          loved:req.body.progressNumbers.loved,
+          happy:req.body.progressNumbers.happy
         }
       });
       newUserData.save(function(err){
@@ -85,6 +81,28 @@ module.exports = function(app){
         res.send(JSON.stringify({ status : 1 }));
       });
     }
+  });
+
+  //***************************************************
+  //
+  //  Post request
+  //
+  //***************************************************
+
+  app.post('/api/authentication/data', function(req, res){
+    //update existing
+    if(req.body.id){
+      userData.findByIdAndUpdate(req.body.id,{
+        progressNumbers:{
+          loved:req.body.progressNumbers.loved,
+          happy:req.body.progressNumbers.happy}
+      },
+        function(err, userData){
+          if(err) throw err;
+          res.send(JSON.stringify({ status : 1 }));
+        });
+      }
+
   });
 
 

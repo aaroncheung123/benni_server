@@ -12,10 +12,8 @@ var userDataSchema = new Schema({
                 password: String
         },
         progressNumbers:{
-                drive: Number,
-                chat: Number,
-                math: Number,
-                charge: Number
+                loved: Number,
+                happy: Number
     }
 });
 
