@@ -51,7 +51,10 @@ module.exports = function(app){
         address:req.body.address,
         email:req.body.email,
         password: req.body.password,
-        num: req.body.num
+        num: req.body.num,
+        progressNumbers:{
+          loved:req.body.progressNumbers.loved,
+          happy:req.body.progressNumbers.happy}
       },
         function(err, userData){
           if(err) throw err;
