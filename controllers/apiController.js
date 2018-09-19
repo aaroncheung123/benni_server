@@ -62,7 +62,6 @@ module.exports = function(app){
         });
       }
     else{
-
       //create new
       var newUserData = userData({
         info:{
@@ -86,27 +85,27 @@ module.exports = function(app){
     }
   });
 
-  //***************************************************
-  //
-  //  Post request
-  //
-  //***************************************************
+  // //***************************************************
+  // //
+  // //  Post request
+  // //
+  // //***************************************************
 
-  app.post('/api/authentication/data', function(req, res){
-    //update existing
-    if(req.body.id){
-      userData.findByIdAndUpdate(req.body.id,{
-        progressNumbers:{
-          loved:req.body.progressNumbers.loved,
-          happy:req.body.progressNumbers.happy}
-      },
-        function(err, userData){
-          if(err) throw err;
-          res.send(JSON.stringify({ status : 1 }));
-        });
-      }
+  // app.post('/api/authentication/data', function(req, res){
+  //   //update existing
+  //   if(req.body.id){
+  //     userData.findByIdAndUpdate(req.body.id,{
+  //       progressNumbers:{
+  //         loved:req.body.progressNumbers.loved,
+  //         happy:req.body.progressNumbers.happy}
+  //     },
+  //       function(err, userData){
+  //         if(err) throw err;
+  //         res.send(JSON.stringify({ status : 1 }));
+  //       });
+  //     }
 
-  });
+  // });
 
 
   //***************************************************
